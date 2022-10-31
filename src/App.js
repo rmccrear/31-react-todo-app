@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { Tag, Button, Card } from "@blueprintjs/core";
+import {useState} from 'react';
+import './App.scss';
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const incrementCounter = () => {
+    setCounter(counter+1);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Card>
+        <Tag> {counter} </Tag>
+        <hr/>
+        <Button icon="refresh"  intent="success" text="button content" onClick={incrementCounter} />
+      </Card>
     </div>
   );
 }
