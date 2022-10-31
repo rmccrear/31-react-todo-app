@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {useForm} from '../../hooks';
-
 import { v4 as uuid } from 'uuid';
+
+import TodoList from './TodoList';
+import AddTodoForm from './AddTodoForm';
+
 
 const Todo = () => {
 
@@ -10,7 +12,6 @@ const Todo = () => {
   });
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
-  const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   function addItem(item) {
     item.id = uuid();
@@ -27,7 +28,7 @@ const Todo = () => {
   function toggleComplete(id) {
 
     const items = list.map( item => {
-      if ( item.id == id ) {
+      if ( item.id === id ) {
         item.complete = ! item.complete;
       }
       return item;
@@ -48,42 +49,8 @@ const Todo = () => {
       <header>
         <h1>To Do List: {incomplete} items pending</h1>
       </header>
-
-      <form onSubmit={handleSubmit}>
-
-        <h2>Add To Do Item</h2>
-
-        <label>
-          <span>To Do Item</span>
-          <input data-testid="item-details-input" onChange={handleChange} name="text" type="text" placeholder="Item Details" />
-        </label>
-
-        <label>
-          <span>Assigned To</span>
-          <input data-testid="assigned-to-input" onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
-        </label>
-
-        <label>
-          <span>Difficulty</span>
-          <input data-testid="difficulty-slider" onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
-        </label>
-
-        <label>
-          <button data-testid="submit-button" type="submit">Add Item</button>
-        </label>
-      </form>
-
-      <div data-testid='todos-container'>
-        {list.map(item => (
-          <div key={item.id}>
-            <p>{item.text}</p>
-            <p><small>Assigned to: {item.assignee}</small></p>
-            <p><small>Difficulty: {item.difficulty}</small></p>
-            <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
-            <hr />
-          </div>
-        ))}
-      </div>
+      <AddTodoForm {...{addItem, defaultValues}} />
+      <TodoList items={list} toggleComplete={toggleComplete} /> 
     </>
   );
 };
