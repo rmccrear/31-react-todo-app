@@ -28,6 +28,6 @@ test('should create a todo', async () => {
 
   const todoContainer = screen.getByTestId('todos-container');
   expect(todoContainer).toHaveTextContent(/Do work/);
-  expect(todoContainer).toHaveTextContent(/James/);
+  expect(todoContainer).toHaveTextContent(/Assigned to: James/);
 
 });
