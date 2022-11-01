@@ -12,7 +12,7 @@ test('should Add Todo controls', () => {
   render(<App />);
   expect(screen.getByTestId('item-details-input')).toBeInTheDocument();
   expect(screen.getByTestId('assigned-to-input')).toBeInTheDocument();
-  expect(screen.getByTestId('difficulty-slider')).toBeInTheDocument();
+  expect(screen.getByRole('slider')).toBeInTheDocument();
 });
 
 test('should create a todo', async () => {

@@ -1,4 +1,4 @@
-import { Button, Slider } from "@blueprintjs/core";
+import { Button, Slider, Card, Classes } from "@blueprintjs/core";
 
 import { useState } from 'react';
 // import {useForm} from '../../hooks';
@@ -26,35 +26,35 @@ function AddTodoForm({addItem, defaultValues}) {
     if (parseInt(value)) {
       value = parseInt(value);
     }
-
     setValues(values => ({ ...values, [name]: value }));
   }
 
   return ( 
+    <Card>
       <form onSubmit={handleSubmit}>
 
         <h2>Add To Do Item</h2>
 
         <label>
           <span>To Do Item</span>
-        <input data-testid="item-details-input" value={values.text} onChange={handleChange} name="text" type="text" placeholder="Item Details" />
+          <input data-testid="item-details-input" className={ Classes.INPUT } value={values.text} onChange={handleChange} name="text" type="text" placeholder="Item Details" />
         </label>
 
         <label>
           <span>Assigned To</span>
-        <input data-testid="assigned-to-input" value={values.assignee} onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+        <input data-testid="assigned-to-input" className={ Classes.INPUT } value={values.assignee} onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
         </label>
 
         <label>
           <span>Difficulty</span>
-        <Slider data-testid="difficulty-slider" onChange={(value) => handleChange({ target: {name: 'difficulty', value} })} initialValue={values.difficulty} min={1} max={5} name="difficulty" />
+        <Slider onChange={(value) => handleChange({ target: {name: 'difficulty', value} })} initialValue={values.difficulty} min={1} max={5} name="difficulty" />
         </label>
 
         <label>
           <Button data-testid="submit-button" type="submit" text="Add Item"/>
         </label>
       </form>
-
+    </Card>
    );
 }
 
