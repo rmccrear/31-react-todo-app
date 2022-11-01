@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.dbdc7eab.css",
-    "main.js": "/static/js/main.303e1ed9.js",
-    "static/js/787.ae9c720e.chunk.js": "/static/js/787.ae9c720e.chunk.js",
-    "static/media/blueprint-icons-20.eot?": "/static/media/blueprint-icons-20.a47a60a1222acf541091.eot",
-    "static/media/blueprint-icons-20.ttf?": "/static/media/blueprint-icons-20.946bbd3554641cd7f0b0.ttf",
-    "static/media/blueprint-icons-16.eot?": "/static/media/blueprint-icons-16.afda86225832edd17d02.eot",
-    "static/media/blueprint-icons-16.ttf?": "/static/media/blueprint-icons-16.306d85e2eecbf7407dfc.ttf",
-    "static/media/blueprint-icons-20.woff?": "/static/media/blueprint-icons-20.7cc84b2fb7f1885c2f5c.woff",
-    "static/media/blueprint-icons-16.woff?": "/static/media/blueprint-icons-16.7ee472bde6a6db6e4b5f.woff",
-    "static/media/blueprint-icons-20.woff2?": "/static/media/blueprint-icons-20.050133cf929c2dba9e93.woff2",
-    "static/media/blueprint-icons-16.woff2?": "/static/media/blueprint-icons-16.4941e344688dc36d6a9d.woff2",
-    "index.html": "/index.html",
-    "main.dbdc7eab.css.map": "/static/css/main.dbdc7eab.css.map",
-    "main.303e1ed9.js.map": "/static/js/main.303e1ed9.js.map",
-    "787.ae9c720e.chunk.js.map": "/static/js/787.ae9c720e.chunk.js.map"
+    "main.css": "/31-react-todo-app/static/css/main.e9e27353.css",
+    "main.js": "/31-react-todo-app/static/js/main.c77773b9.js",
+    "static/js/787.ae9c720e.chunk.js": "/31-react-todo-app/static/js/787.ae9c720e.chunk.js",
+    "static/media/blueprint-icons-20.eot?": "/31-react-todo-app/static/media/blueprint-icons-20.a47a60a1222acf541091.eot",
+    "static/media/blueprint-icons-20.ttf?": "/31-react-todo-app/static/media/blueprint-icons-20.946bbd3554641cd7f0b0.ttf",
+    "static/media/blueprint-icons-16.eot?": "/31-react-todo-app/static/media/blueprint-icons-16.afda86225832edd17d02.eot",
+    "static/media/blueprint-icons-16.ttf?": "/31-react-todo-app/static/media/blueprint-icons-16.306d85e2eecbf7407dfc.ttf",
+    "static/media/blueprint-icons-20.woff?": "/31-react-todo-app/static/media/blueprint-icons-20.7cc84b2fb7f1885c2f5c.woff",
+    "static/media/blueprint-icons-16.woff?": "/31-react-todo-app/static/media/blueprint-icons-16.7ee472bde6a6db6e4b5f.woff",
+    "static/media/blueprint-icons-20.woff2?": "/31-react-todo-app/static/media/blueprint-icons-20.050133cf929c2dba9e93.woff2",
+    "static/media/blueprint-icons-16.woff2?": "/31-react-todo-app/static/media/blueprint-icons-16.4941e344688dc36d6a9d.woff2",
+    "index.html": "/31-react-todo-app/index.html",
+    "main.e9e27353.css.map": "/31-react-todo-app/static/css/main.e9e27353.css.map",
+    "main.c77773b9.js.map": "/31-react-todo-app/static/js/main.c77773b9.js.map",
+    "787.ae9c720e.chunk.js.map": "/31-react-todo-app/static/js/787.ae9c720e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dbdc7eab.css",
-    "static/js/main.303e1ed9.js"
+    "static/css/main.e9e27353.css",
+    "static/js/main.c77773b9.js"
   ]
 }
