@@ -6,10 +6,10 @@ const defaultPaginationLength = 5
 
 function SettingsProvider (props) {
   const [paginationLength, setPaginationLength] = useState(defaultPaginationLength);
-  const [sort, setSort] = useState('');
-  const [displayCompleted, setDisplayCompleted] = useState(false);
+  const [sortBy, setSortBy] = useState('NONE');
+  const [showCompleted, setShowCompleted] = useState(false);
   return (
-    <SettingsContext.Provider value={ {paginationLength, sort, displayCompleted, setPaginationLength} }>
+    <SettingsContext.Provider value={ {paginationLength, setPaginationLength, setSortBy, sortBy, showCompleted, setShowCompleted} }>
       { props.children }
     </SettingsContext.Provider>
   );
