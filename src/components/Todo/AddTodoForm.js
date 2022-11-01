@@ -1,8 +1,35 @@
-import {useForm} from '../../hooks';
+import { Button, Slider } from "@blueprintjs/core";
+
+import { useState } from 'react';
+// import {useForm} from '../../hooks';
 
 
 function AddTodoForm({addItem, defaultValues}) {
-  const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
+  // const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
+
+  const localDefaultValues = {
+    text: '',
+    assignee: '',
+    difficulty: 1
+  }
+  const [values, setValues] = useState({ ...localDefaultValues, ...defaultValues });
+
+  const handleSubmit = (event) => { 
+    event.preventDefault();
+    addItem(values);
+    setValues({ ...localDefaultValues, ...defaultValues });
+  }
+  
+  const handleChange = (event) => { 
+    event.preventDefault && event.preventDefault();
+    let { name, value } = event.target;
+    if (parseInt(value)) {
+      value = parseInt(value);
+    }
+
+    setValues(values => ({ ...values, [name]: value }));
+  }
+
   return ( 
       <form onSubmit={handleSubmit}>
 
@@ -10,21 +37,21 @@ function AddTodoForm({addItem, defaultValues}) {
 
         <label>
           <span>To Do Item</span>
-          <input data-testid="item-details-input" onChange={handleChange} name="text" type="text" placeholder="Item Details" />
+        <input data-testid="item-details-input" value={values.text} onChange={handleChange} name="text" type="text" placeholder="Item Details" />
         </label>
 
         <label>
           <span>Assigned To</span>
-          <input data-testid="assigned-to-input" onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+        <input data-testid="assigned-to-input" value={values.assignee} onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
         </label>
 
         <label>
           <span>Difficulty</span>
-          <input data-testid="difficulty-slider" onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
+        <Slider data-testid="difficulty-slider" onChange={(value) => handleChange({ target: {name: 'difficulty', value} })} initialValue={values.difficulty} min={1} max={5} name="difficulty" />
         </label>
 
         <label>
-          <button data-testid="submit-button" type="submit">Add Item</button>
+          <Button data-testid="submit-button" type="submit" text="Add Item"/>
         </label>
       </form>
 
