@@ -29,10 +29,24 @@ const items = [
     complete: false
   },
   {
+    text: 'Keep doing even more work',
+    assignee: 'Jack Jack',
+    difficulty: 2,
+    id: 'abc-1004',
+    complete: false
+  },
+  {
+    text: 'Do even more work',
+    assignee: 'Jack Jack Jack',
+    difficulty: 2,
+    id: 'abc-1005',
+    complete: false
+  },
+  {
     text: 'Keep doing work',
     assignee: 'Jerry',
     difficulty: 2,
-    id: 'abc-1004',
+    id: 'abc-1006',
     complete: false
   }
 ]

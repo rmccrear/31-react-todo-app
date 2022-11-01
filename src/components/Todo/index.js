@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
+import TodoNavbar from './Navbar';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
@@ -46,6 +47,7 @@ const Todo = () => {
 
   return (
     <>
+      <TodoNavbar />
       <header>
         <h1>To Do List: {incomplete} items pending</h1>
       </header>

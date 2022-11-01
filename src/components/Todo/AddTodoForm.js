@@ -1,4 +1,4 @@
-import { Button, Slider, Card, Classes } from "@blueprintjs/core";
+import { Button, Slider, Card, Classes, Label } from "@blueprintjs/core";
 
 import { useState } from 'react';
 // import {useForm} from '../../hooks';
@@ -35,24 +35,24 @@ function AddTodoForm({addItem, defaultValues}) {
 
         <h2>Add To Do Item</h2>
 
-        <label>
+        <Label>
           <span>To Do Item</span>
           <input data-testid="item-details-input" className={ Classes.INPUT } value={values.text} onChange={handleChange} name="text" type="text" placeholder="Item Details" />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           <span>Assigned To</span>
         <input data-testid="assigned-to-input" className={ Classes.INPUT } value={values.assignee} onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           <span>Difficulty</span>
         <Slider onChange={(value) => handleChange({ target: {name: 'difficulty', value} })} initialValue={values.difficulty} min={1} max={5} name="difficulty" />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           <Button data-testid="submit-button" type="submit" text="Add Item"/>
-        </label>
+        </Label>
       </form>
     </Card>
    );

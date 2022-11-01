@@ -38,14 +38,18 @@ function TodoList({items, toggleComplete}) {
   const context = useContext(SettingsContext);
   return ( 
       <Card data-testid='todos-container'>
-        <span>{ context.paginationLength } / page</span>
         {doPaginate().map(item => (
             <TodoItem key={ item.id } item={item} toggleComplete={toggleComplete}  />
         ))}
+      {
+        items.length > context.paginationLength ?
         <ButtonGroup>
         <Button onClick={ decrementIdxStart }>&lt;</Button>
+        <span className="bp4-button">Showing {idxStart + 1}-{idxStart + context.paginationLength} of {items.length}</span>
         <Button onClick={ incrementIdxStart }>&gt;</Button>
         </ButtonGroup>
+        : ''
+      }
       </Card>
    );
 }
