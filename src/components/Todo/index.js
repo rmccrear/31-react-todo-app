@@ -4,6 +4,8 @@ import { v4 as uuid } from 'uuid';
 import TodoNavbar from './Navbar';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import { Storage } from '../../lib/storage';
+import { SettingsContext } from '../../context/settings';
 
 
 const Todo = () => {
