@@ -28,7 +28,7 @@ function TodoNavbar(props) {
         <Navbar.Group align={Alignment.LEFT}>
           <Navbar.Heading>Todos</Navbar.Heading>
           <Navbar.Divider />
-          <Button onClick={ openSettings }  className="bp4-minimal" icon="settings" text="Settings" />
+          <Button data-testid="settings-button" onClick={ openSettings }  className="bp4-minimal" icon="settings" text="Settings" />
         </Navbar.Group>
       </Navbar>
       <div>

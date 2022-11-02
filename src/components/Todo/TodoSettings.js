@@ -1,4 +1,4 @@
-import { useState, useContext  } from 'react';
+import { useContext  } from 'react';
 import {Button, ButtonGroup, Card, H1, Label, Slider, Switch} from "@blueprintjs/core";
 
 import { SettingsContext } from '../../context/settings';
@@ -30,6 +30,7 @@ function TodoSettings(props) {
           Sort By
           <ButtonGroup>
             <Button
+              data-testid="assignee-sort-button"
               className={sortBy === 'ASSIGNEE' ? 'bp4-active' : ''}
               onClick={() => handleSortByChange('ASSIGNEE')}>Assignee</Button>
             <Button
