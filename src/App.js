@@ -1,21 +1,14 @@
-import { Tag, Button, Card } from "@blueprintjs/core";
-import {useState} from 'react';
+import React from 'react';
 import './App.scss';
+import Todo from './components/Todo';
+import SettingsProvider from './context/settings';
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const incrementCounter = () => {
-    setCounter(counter+1);
+export default class App extends React.Component {
+  render() {
+    return (
+      <SettingsProvider>
+        <Todo />
+      </SettingsProvider>
+    );
   }
-  return (
-    <div className="App">
-      <Card>
-        <Tag> {counter} </Tag>
-        <hr/>
-        <Button icon="refresh"  intent="success" text="button content" onClick={incrementCounter} />
-      </Card>
-    </div>
-  );
 }
-
-export default App;
