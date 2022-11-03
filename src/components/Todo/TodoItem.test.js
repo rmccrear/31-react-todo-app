@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event'
 
 import TodoItem from "./TodoItem";
 
+import { MockAdminLoginProvider } from '../../__fixtures__/MockLoginProviders';
+
 let callback;
 
 describe('TodoItem', () => {
@@ -23,7 +25,11 @@ describe('TodoItem', () => {
       id: 'abc-1001',
       complete: false
     }
-    render(<TodoItem item={item} toggleComplete={callback} />);
+    render(
+      <MockAdminLoginProvider>
+        <TodoItem item={item} toggleComplete={callback} />
+      </MockAdminLoginProvider>
+    );
     expect(screen.getByText('Do work')).toBeInTheDocument();
     expect(screen.getByText(/James/)).toBeInTheDocument();
   });
@@ -36,7 +42,11 @@ describe('TodoItem', () => {
       id: 'abc-1001',
       complete: false
     }
-    render(<TodoItem item={item} toggleComplete={callback} />);
+    render(
+      <MockAdminLoginProvider>
+        <TodoItem item={item} toggleComplete={callback} />
+      </MockAdminLoginProvider>
+    );
     expect(screen.getByText('Do work')).toBeInTheDocument();
     expect(screen.getByText(/James/)).toBeInTheDocument();
     expect(screen.getByText(/Complete: false/)).toBeInTheDocument();
