@@ -5,7 +5,7 @@ import { doFilter, doPaginate, doSort } from "../../lib/sorting";
 import { SettingsContext } from '../../context/settings';
 
 
-function TodoList({items, toggleComplete}) {
+function TodoList({items, toggleComplete, deleteItem}) {
 
   const [idxStart, setIdxStart] = useState(0);
   const { paginationLength, sortBy, showCompleted } = useContext(SettingsContext);
@@ -38,7 +38,7 @@ function TodoList({items, toggleComplete}) {
   return ( 
       <Card data-testid='todos-container'>
         {processList(items).map(item => (
-            <TodoItem key={ item.id } item={item} toggleComplete={toggleComplete}  />
+          <TodoItem key={item.id} item={item} toggleComplete={toggleComplete} deleteItem={ deleteItem }  />
         ))}
       {
         items.length > context.paginationLength ?

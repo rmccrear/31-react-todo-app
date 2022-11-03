@@ -54,7 +54,7 @@ const Todo = () => {
         <h1>To Do List: {incomplete} items pending</h1>
       </header>
       <AddTodoForm {...{addItem, defaultValues}} />
-      <TodoList items={list} toggleComplete={toggleComplete} /> 
+      <TodoList items={list} deleteItem={ deleteItem } toggleComplete={toggleComplete} /> 
     </>
   );
 };
