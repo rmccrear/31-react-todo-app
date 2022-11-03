@@ -2,29 +2,26 @@ import React from 'react';
 import cookie from 'react-cookies';
 import jwt_decode from 'jwt-decode';
 
-// the test tokens are not valid json, but can be made into objects with eval.
-const evil = (capabilities) => eval(capabilities);
-
 const testUsers = {
   Administrator: {
     password: 'admin',
     name: 'Administrator',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImNhcGFiaWxpdGllcyI6IlsnY3JlYXRlJywncmVhZCcsJ3VwZGF0ZScsJ2RlbGV0ZSddIiwiaWF0IjoxNTE2MjM5MDIyfQ.pAZXAlTmC8fPELk2xHEaP1mUhR8egg9TH5rCyqZhZkQ'
+    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImNhcGFiaWxpdGllcyI6IltcImNyZWF0ZVwiLFwicmVhZFwiLFwidXBkYXRlXCIsXCJkZWxldGVcIl0iLCJpYXQiOjE1MTYyMzkwMjJ9.i_oT0rnAW6sjpcuXe96la7Xs3002uSMb22OdTnzj82U'
   },
   Editor: {
     password: 'editor',
     name: 'Editor',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRWRpdG9yIiwicm9sZSI6ImVkaXRvciIsImNhcGFiaWxpdGllcyI6IlsncmVhZCcsJ3VwZGF0ZSddIiwiaWF0IjoxNTE2MjM5MDIyfQ.3aDn3e2pf_J_1rZig8wj9RiT47Ae2Lw-AM-Nw4Tmy_s'
+    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiRWRpdG9yIiwicm9sZSI6ImVkaXRvciIsImNhcGFiaWxpdGllcyI6IltcInJlYWRcIixcInVwZGF0ZVwiXSIsImlhdCI6MTUxNjIzOTAyMn0.2ka66o0ceNy5xsKwviE3jLTmEQblDH0v00Malk6sypY'
   },
   Writer: {
     password: 'writer',
     name: 'Writer',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiV3JpdGVyIiwicm9sZSI6IndyaXRlciIsImNhcGFiaWxpdGllcyI6IlsnY3JlYXRlJ10iLCJpYXQiOjE1MTYyMzkwMjJ9.dmKh8m18mgQCCJp2xoh73HSOWprdwID32hZsXogLZ68'
+    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiV3JpdGVyIiwicm9sZSI6IndyaXRlciIsImNhcGFiaWxpdGllcyI6IltcImNyZWF0ZVwiXSIsImlhdCI6MTUxNjIzOTAyMn0.SsE689BI8Rj9NeuOsH8JaOey5Gz5gGZaHaZipvstQe0'
   },
   User: {
     password: 'user',
     name: 'User',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVXNlciIsInJvbGUiOiJ1c2VyIiwiY2FwYWJpbGl0aWVzIjoiWydyZWFkJ10iLCJpYXQiOjE1MTYyMzkwMjJ9.WXYvIKLdPz_Mm0XDYSOJo298ftuBqqjTzbRvCpxa9Go'
+    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiVXNlciIsInJvbGUiOiJ1c2VyIiwiY2FwYWJpbGl0aWVzIjoiW1wicmVhZFwiXSIsImlhdCI6MTUxNjIzOTAyMn0.mUh9qSJLYVR21AsGYl5YYAjONkhFJUTbzCtoaSPf65E'
   },
 };
 
@@ -71,7 +68,7 @@ class LoginProvider extends React.Component {
   validateToken = token => {
     try {
       let validUser = jwt_decode(token);
-      validUser.capabilities = evil(validUser.capabilities);
+      validUser.capabilities = JSON.parse(validUser.capabilities);
       this.setLoginState(true, token, validUser);
     }
     catch (e) {
