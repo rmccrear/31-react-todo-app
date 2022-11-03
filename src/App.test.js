@@ -3,6 +3,9 @@ import userEvent from '@testing-library/user-event'
 import App from './App';
 import { items } from './lib/item.fixtures';
 
+import SettingsProvider from './context/settings';
+import { MockAdminLoginProvider } from './__fixtures__/MockLoginProviders';
+
 const addItem = async (screen, item) => {
     const detailsInput = screen.getByTestId('item-details-input');
     const assignInput = screen.getByTestId('assigned-to-input');
@@ -16,20 +19,38 @@ const addItem = async (screen, item) => {
 
 describe('App', () => {
   test('renders to do list', () => {
-    render(<App />);
+    render(
+      <MockAdminLoginProvider>
+        <SettingsProvider>
+          <App />
+        </SettingsProvider>
+      </MockAdminLoginProvider>
+    );
     const titleElement = screen.getByText(/To Do List/i);
     expect(titleElement).toBeInTheDocument();
   });
   
   test('should Add Todo controls', () => {
-    render(<App />);
+    render(
+      <MockAdminLoginProvider>
+        <SettingsProvider>
+          <App />
+        </SettingsProvider>
+      </MockAdminLoginProvider>
+    );
     expect(screen.getByTestId('item-details-input')).toBeInTheDocument();
     expect(screen.getByTestId('assigned-to-input')).toBeInTheDocument();
     expect(screen.getByRole('slider')).toBeInTheDocument();
   });
   
   test('should create a todo', async () => {
-    render(<App />);
+    render(
+      <MockAdminLoginProvider>
+        <SettingsProvider>
+          <App />
+        </SettingsProvider>
+      </MockAdminLoginProvider>
+    );
     const detailsInput = screen.getByTestId('item-details-input');
     const assignInput = screen.getByTestId('assigned-to-input');
     const submitButton = screen.getByTestId('submit-button');
@@ -45,7 +66,13 @@ describe('App', () => {
   });
 
   test('should update settings', async () => {
-    render(<App/>);
+    render(
+      <MockAdminLoginProvider>
+        <SettingsProvider>
+          <App />
+        </SettingsProvider>
+      </MockAdminLoginProvider>
+    );
     for (let item of items) { 
       await addItem(screen, item);
     }

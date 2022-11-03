@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event'
 import TodoList from './TodoList';
 import SettingsProvider from '../../context/settings';
 
+import { MockAdminLoginProvider } from '../../__fixtures__/MockLoginProviders';
+
 let toggleComplete = jest.fn();
 
 const items = [
@@ -54,9 +56,11 @@ const items = [
 describe('TodoList', () => {
   test('it should render TodoList', () => {
     render((
-      <SettingsProvider>
-        <TodoList items={items} toggleComplete={toggleComplete} />
-      </SettingsProvider>
+      <MockAdminLoginProvider>
+        <SettingsProvider>
+          <TodoList items={items} toggleComplete={toggleComplete} />
+        </SettingsProvider>
+      </MockAdminLoginProvider>
     ))
     // expect(screen.getByText(/James/)).toBeInTheDocument();
     expect(screen.getByText(/Jim/)).toBeInTheDocument();
@@ -64,9 +68,11 @@ describe('TodoList', () => {
 
   test('should paginate items', async () => {
     render((
-      <SettingsProvider>
-        <TodoList items={items} toggleComplete={toggleComplete} />
-      </SettingsProvider>
+      <MockAdminLoginProvider>
+        <SettingsProvider>
+          <TodoList items={items} toggleComplete={toggleComplete} />
+        </SettingsProvider>
+      </MockAdminLoginProvider>
     ))
     expect(screen.getByText(/James/)).toBeInTheDocument();
     expect(screen.getByText(/Jim/)).toBeInTheDocument();
