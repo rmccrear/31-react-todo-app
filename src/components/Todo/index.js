@@ -4,8 +4,7 @@ import { v4 as uuid } from 'uuid';
 import TodoNavbar from './Navbar';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
-import { Storage } from '../../lib/storage';
-import { SettingsContext } from '../../context/settings';
+import Auth from '../../auth/Auth';
 
 
 const Todo = () => {
@@ -53,8 +52,12 @@ const Todo = () => {
       <header>
         <h1>To Do List: {incomplete} items pending</h1>
       </header>
-      <AddTodoForm {...{addItem, defaultValues}} />
-      <TodoList items={list} deleteItem={ deleteItem } toggleComplete={toggleComplete} /> 
+      <Auth capability="create">
+        <AddTodoForm {...{addItem, defaultValues}} />
+      </Auth>
+      <Auth capability="read">
+        <TodoList items={list} deleteItem={ deleteItem } toggleComplete={toggleComplete} /> 
+      </Auth>
     </>
   );
 };

@@ -2,6 +2,9 @@ import React from 'react';
 import cookie from 'react-cookies';
 import jwt_decode from 'jwt-decode';
 
+// the test tokens are not valid json, but can be made into objects with eval.
+const evil = (capabilities) => eval(capabilities);
+
 const testUsers = {
   Administrator: {
     password: 'admin',
@@ -68,6 +71,7 @@ class LoginProvider extends React.Component {
   validateToken = token => {
     try {
       let validUser = jwt_decode(token);
+      validUser.capabilities = evil(validUser.capabilities);
       this.setLoginState(true, token, validUser);
     }
     catch (e) {
