@@ -1,7 +1,5 @@
-// src/mocks/handlers.js
 import { rest } from 'msw'
 
-// import { testUsers } from '../__fixtures__/testUsers';
 import { testTodos } from '../__fixtures__/testTodos';
 
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -48,6 +46,7 @@ export const apiHandlers = [
   rest.delete(`${apiUrl}/todos/1`, async (req, res, ctx)=>{
     return res(
       ctx.status(204),
+      ctx.json(1)
     )
   }),
 

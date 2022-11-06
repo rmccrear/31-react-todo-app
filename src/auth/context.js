@@ -3,6 +3,8 @@ import cookie from 'react-cookies';
 import jwt_decode from 'jwt-decode';
 
 import { signin, signup } from './api';
+import { axiosWithBearer} from './axios-api-setup';
+import TodoApi from '../lib/todo-api';
 
 export const LoginContext = React.createContext();
 
@@ -17,6 +19,7 @@ class LoginProvider extends React.Component {
       logout: this.logout,
       signup: this.signup,
       user: { capabilities: [] },
+      todoApi: this.todoApi,
       error: null,
     };
   }
@@ -85,7 +88,8 @@ class LoginProvider extends React.Component {
 
   setLoginState = (loggedIn, token, user, error) => {
     cookie.save('auth', token);
-    this.setState({ token, loggedIn, user, error: error || null });
+    const todoApi = new TodoApi(axiosWithBearer(token));
+    this.setState({ token, loggedIn, user, todoApi, error: error || null });
   };
 
   componentDidMount() {
