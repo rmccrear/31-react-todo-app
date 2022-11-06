@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/31-react-todo-app/static/css/main.e9e27353.css",
-    "main.js": "/31-react-todo-app/static/js/main.8d8bdae2.js",
+    "main.js": "/31-react-todo-app/static/js/main.20e89812.js",
     "static/js/787.ae9c720e.chunk.js": "/31-react-todo-app/static/js/787.ae9c720e.chunk.js",
     "static/media/blueprint-icons-20.eot?": "/31-react-todo-app/static/media/blueprint-icons-20.a47a60a1222acf541091.eot",
     "static/media/blueprint-icons-20.ttf?": "/31-react-todo-app/static/media/blueprint-icons-20.946bbd3554641cd7f0b0.ttf",
@@ -13,11 +13,11 @@
     "static/media/blueprint-icons-16.woff2?": "/31-react-todo-app/static/media/blueprint-icons-16.4941e344688dc36d6a9d.woff2",
     "index.html": "/31-react-todo-app/index.html",
     "main.e9e27353.css.map": "/31-react-todo-app/static/css/main.e9e27353.css.map",
-    "main.8d8bdae2.js.map": "/31-react-todo-app/static/js/main.8d8bdae2.js.map",
+    "main.20e89812.js.map": "/31-react-todo-app/static/js/main.20e89812.js.map",
     "787.ae9c720e.chunk.js.map": "/31-react-todo-app/static/js/787.ae9c720e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e9e27353.css",
-    "static/js/main.8d8bdae2.js"
+    "static/js/main.20e89812.js"
   ]
 }
