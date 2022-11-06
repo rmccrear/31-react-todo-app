@@ -1,5 +1,6 @@
 import { doFilter, doSort, doPaginate } from "./sorting";
-import { items } from './item.fixtures';
+import { testTodos } from '../__fixtures__/testTodos';
+const items = testTodos;
 
 
 describe('Process List of Items (Sort, etc...)', () => {

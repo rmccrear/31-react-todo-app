@@ -1,10 +1,12 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import App from './App';
-import { items } from './lib/item.fixtures';
+import { testTodos } from './__fixtures__/testTodos';
 
 import SettingsProvider from './context/settings';
 import { MockAdminLoginProvider } from './__fixtures__/MockLoginProviders';
+
+const items = testTodos;
 
 const addItem = async (screen, item) => {
     const detailsInput = screen.getByTestId('item-details-input');
