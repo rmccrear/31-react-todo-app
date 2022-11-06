@@ -2,30 +2,7 @@ import React from 'react';
 import cookie from 'react-cookies';
 import jwt_decode from 'jwt-decode';
 
-import {signin, signup, signout} from './api';
-
-const testUsers = {
-  Administrator: {
-    password: 'admin',
-    name: 'Administrator',
-    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImNhcGFiaWxpdGllcyI6IltcImNyZWF0ZVwiLFwicmVhZFwiLFwidXBkYXRlXCIsXCJkZWxldGVcIl0iLCJpYXQiOjE1MTYyMzkwMjJ9.i_oT0rnAW6sjpcuXe96la7Xs3002uSMb22OdTnzj82U'
-  },
-  Editor: {
-    password: 'editor',
-    name: 'Editor',
-    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiRWRpdG9yIiwicm9sZSI6ImVkaXRvciIsImNhcGFiaWxpdGllcyI6IltcInJlYWRcIixcInVwZGF0ZVwiXSIsImlhdCI6MTUxNjIzOTAyMn0.2ka66o0ceNy5xsKwviE3jLTmEQblDH0v00Malk6sypY'
-  },
-  Writer: {
-    password: 'writer',
-    name: 'Writer',
-    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiV3JpdGVyIiwicm9sZSI6IndyaXRlciIsImNhcGFiaWxpdGllcyI6IltcImNyZWF0ZVwiXSIsImlhdCI6MTUxNjIzOTAyMn0.SsE689BI8Rj9NeuOsH8JaOey5Gz5gGZaHaZipvstQe0'
-  },
-  User: {
-    password: 'user',
-    name: 'User',
-    token: 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiVXNlciIsInJvbGUiOiJ1c2VyIiwiY2FwYWJpbGl0aWVzIjoiW1wicmVhZFwiXSIsImlhdCI6MTUxNjIzOTAyMn0.mUh9qSJLYVR21AsGYl5YYAjONkhFJUTbzCtoaSPf65E'
-  },
-};
+import { signin, signup } from './api';
 
 export const LoginContext = React.createContext();
 
