@@ -1,4 +1,4 @@
-export const items = [
+export const testTodos = [
   {
     text: 'Zebra cleaning day',
     assignee: 'Zed',
@@ -49,4 +49,3 @@ export const items = [
     complete: false
   }
 ];
-
