@@ -23,7 +23,9 @@ class Login extends React.Component {
 
   handleSuccess({ status }) {
     if (status === 'success') { 
-      this.props.successCallback();
+      this.props.callback({status: status});
+    } else {
+      this.props.callback({status: status});
     }
   }
 

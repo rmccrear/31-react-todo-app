@@ -2,6 +2,8 @@ import React from 'react';
 import cookie from 'react-cookies';
 import jwt_decode from 'jwt-decode';
 
+import {signin, signup, signout} from './api';
+
 const testUsers = {
   Administrator: {
     password: 'admin',
@@ -36,6 +38,7 @@ class LoginProvider extends React.Component {
       can: this.can,
       login: this.login,
       logout: this.logout,
+      signup: this.signup,
       user: { capabilities: [] },
       error: null,
     };
@@ -45,8 +48,32 @@ class LoginProvider extends React.Component {
     return this?.state?.user?.capabilities?.includes(capability);
   }
 
+  signup = async (username, password, role, callback) => {
+    const resp = await signup(username, password, role);
+    const token = resp.token;
+    console.log(resp);
+    if (token) {
+      const validUser = resp.user;
+      this.setLoginState(true, token, validUser);
+      callback({ status: 'success' })
+    }
+    else {
+      this.setState({...this.state, error: 'signup error'})
+      callback({ status: 'error', resp })
+    }
+  }
+
   login = async (username, password, callback) => {
-    let { loggedIn, token, user } = this.state;
+    // let { loggedIn, token, user } = this.state;
+    const resp = await signin(username, password);
+    const token = resp.token;
+    console.log(resp);
+    if (token) {
+      const validUser = resp.user;
+      this.setLoginState(true, token, validUser);
+      callback({status: 'success'})
+    }
+    /*
     let auth = testUsers[username];
 
     if (auth && auth.password === password) {
@@ -59,6 +86,7 @@ class LoginProvider extends React.Component {
         console.error(e);
       }
     }
+    */
   }
 
   logout = () => {

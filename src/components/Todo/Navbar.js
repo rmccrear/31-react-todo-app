@@ -1,12 +1,12 @@
 import { useState, useContext } from 'react';
 import { Navbar, Button, Card, Alignment, Overlay, Elevation, Classes } from "@blueprintjs/core";
 import TodoSettings from './TodoSettings';
-import Login from '../../auth/Login';
 import { LoginContext } from '../../auth/context';
+import LoginDialog from '../../auth/LoginDialog';
 
 function TodoNavbar(props) {
   const context = useContext(LoginContext);
-  const { loggedIn } = context;
+  const { loggedIn, user } = context;
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
 
@@ -22,6 +22,15 @@ function TodoNavbar(props) {
   }
   const closeLogin = () => {
     setLoginIsOpen(false);
+  }
+
+  const loginCallback = (status) => {
+    if (status.status === 'success') {
+      closeLogin();
+    } else {
+      alert('error logging in or signing up');
+      console.log(status);
+    }
   }
   
   const overlayOpts = {
@@ -42,7 +51,7 @@ function TodoNavbar(props) {
           <Navbar.Divider />
           <Button data-testid="settings-button" onClick={ openSettings }  className="bp4-minimal" icon="settings" text="Settings" />
           { loggedIn ?
-              <Button data-testid="logout-button" onClick={ openLogin }  className="bp4-minimal" icon="settings" text="Logout" />
+            <Button data-testid="logout-button" onClick={openLogin} className="bp4-minimal" icon="settings" text={`Logout ${user.username}`} />
             : <Button data-testid="login-button" onClick={ openLogin }  className="bp4-minimal" icon="settings" text="Login" />
           }
         </Navbar.Group>
@@ -55,7 +64,7 @@ function TodoNavbar(props) {
         </Overlay>
         <Overlay isOpen={loginIsOpen} onClose={closeLogin} {...overlayOpts} className={Classes.OVERLAY_SCROLL_CONTAINER}>
           <Card elevation={Elevation.FOUR}>
-            <Login successCallback={closeLogin} />
+            <LoginDialog callback={loginCallback} />
           </Card>
         </Overlay>
       </div>
